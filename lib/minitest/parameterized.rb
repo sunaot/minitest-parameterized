@@ -49,7 +49,7 @@ module Minitest
       end
 
       def domains
-        raise '`where` params should be defines.' unless @names.length > 0
+        raise '`where` params should be defined.' unless @names.length > 0
         @names.map(&:to_sym)
       end
 
