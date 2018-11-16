@@ -37,7 +37,7 @@ module Minitest
       end
 
       def where(names)
-        @names = names.reject {|name| %w( | || ).include?(name) }
+        @names = names.reject {|name| %w( | || , ).include?(name) }
       end
 
       def when(&block)

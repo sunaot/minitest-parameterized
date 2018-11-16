@@ -43,5 +43,26 @@ class Minitest::ParameterizedTest < Minitest::Test
       data [ 45  ,  1800 ]
       data [ 70  ,   400 ]
     end
+
+    parameterized do |spec|
+      describe 'Header separators' do
+        spec.when { TicketPrice.price(age) }
+        spec.then do
+          assert { subject == cost }
+        end
+
+        spec.where \
+          %w| age , cost |
+        data [ 70 ,  400 ]
+
+        spec.where \
+          %w( age | cost )
+        data [ 45 , 1800 ]
+
+        spec.where \
+          %w( age || cost )
+        data [ 45 ,  1800 ]
+      end
+    end
   end
 end
