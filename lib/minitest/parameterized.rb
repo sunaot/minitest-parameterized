@@ -31,9 +31,7 @@ module Minitest
 
     class Spec
       def initialize
-        @names = []
-        @when = proc { raise '`when` should be defined.' }
-        @then = proc { raise '`then` should be defined.' }
+        reset
       end
 
       def where(names)
@@ -59,6 +57,12 @@ module Minitest
 
       def then_proc
         @then
+      end
+
+      def reset
+        @names = []
+        @when = proc { raise '`when` should be defined.' }
+        @then = proc { raise '`then` should be defined.' }
       end
     end
   end

@@ -64,5 +64,20 @@ class Minitest::ParameterizedTest < Minitest::Test
         data [ 45 ,  1800 ]
       end
     end
+
+    parameterized do |spec|
+      describe 'No when definition' do
+        spec.then do
+          e = assert_raises RuntimeError do
+            subject == cost
+          end
+          assert { e.message == '`when` should be defined.' }
+        end
+
+        spec.where \
+          %w( age | cost )
+        data [ 70 ,  400 ]
+      end
+    end
   end
 end
